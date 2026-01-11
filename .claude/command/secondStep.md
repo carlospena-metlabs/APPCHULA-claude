@@ -1,0 +1,2 @@
+Let's build the MVP milestone of this project according to the projectSpec.md document. Make an implementation plan first and divide the work into sessions that will later be placed in ./claude/sessions to send them      
+  to the agents. Make it clear which agent will do the work in the future, or which one you think is necessary for each task.  

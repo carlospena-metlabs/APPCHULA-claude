@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(git -C \"C:\\\\Users\\\\usuario\\\\Desktop\\\\METLABS\\\\claude-code-workflow\\\\workflow-inicio\" log --oneline)",
+      "Bash(git -C \"C:\\\\Users\\\\usuario\\\\Desktop\\\\METLABS\\\\claude-code-workflow\\\\workflow-inicio\" remote -v)",
+      "Bash(git -C \"C:\\\\Users\\\\usuario\\\\Desktop\\\\METLABS\\\\claude-code-workflow\\\\workflow-inicio\" log --pretty=format:\"%h %s\" -5)",
+      "Bash(git -C \"C:\\\\Users\\\\usuario\\\\Desktop\\\\METLABS\\\\claude-code-workflow\\\\workflow-inicio\" diff HEAD --stat)",
+      "Bash(git -C \"C:\\\\Users\\\\usuario\\\\Desktop\\\\METLABS\\\\claude-code-workflow\\\\workflow-inicio\" show --stat 28f0bcb)",
+      "Bash(git -C \"C:\\\\Users\\\\usuario\\\\Desktop\\\\METLABS\\\\claude-code-workflow\\\\workflow-inicio\" show 12b1cb1 --stat)"
     ]
   }
 }
