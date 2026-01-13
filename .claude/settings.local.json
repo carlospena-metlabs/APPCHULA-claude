@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(git -C \"C:\\\\Users\\\\usuario\\\\Desktop\\\\METLABS\\\\claude-code-workflow\\\\workflow-inicio\" log --oneline)",
+      "Bash(git -C \"C:\\\\Users\\\\usuario\\\\Desktop\\\\METLABS\\\\claude-code-workflow\\\\workflow-inicio\" remote -v)",
+      "Bash(git -C \"C:\\\\Users\\\\usuario\\\\Desktop\\\\METLABS\\\\claude-code-workflow\\\\workflow-inicio\" log --pretty=format:\"%h %s\" -5)",
+      "Bash(git -C \"C:\\\\Users\\\\usuario\\\\Desktop\\\\METLABS\\\\claude-code-workflow\\\\workflow-inicio\" diff HEAD --stat)",
+      "Bash(git -C \"C:\\\\Users\\\\usuario\\\\Desktop\\\\METLABS\\\\claude-code-workflow\\\\workflow-inicio\" show --stat 28f0bcb)",
+      "Bash(git -C \"C:\\\\Users\\\\usuario\\\\Desktop\\\\METLABS\\\\claude-code-workflow\\\\workflow-inicio\" show 12b1cb1 --stat)",
+      "Bash(npx create-next-app@latest appchula --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --use-npm)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(yes:*)",
+      "Bash(npm install:*)",
+      "Bash(npx shadcn@latest init:*)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run build)",
+      "Bash(npx supabase init)",
+      "Bash(npx supabase:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(dir:*)",
+      "Bash(npm run dev:*)",
+      "Bash(timeout:*)",
+      "Bash(npx tsx:*)",
+      "Bash(findstr:*)",
+      "Bash(ping:*)",
+      "mcp__playwrigt",
+      "mcp__playwrigt__browser_click",
+      "Bash(taskkill:*)",
+      "Bash(node -e \"\nconst { createClient } = require\\(''@supabase/supabase-js''\\);\nconst supabase = createClient\\(\n  ''https://pdebpzqkuhafoggyclvb.supabase.co'',\n  ''eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBkZWJwenFrdWhhZm9nZ3ljbHZiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2ODExOTQ4NiwiZXhwIjoyMDgzNjk1NDg2fQ.4cUVKwmB0OfgJb8pCPDwNxAASZIoIpNpUE2fDFhTN3Q''\n\\);\nsupabase.from\\(''users''\\).select\\(''id, email, full_name, is_admin, is_operator, user_type, status''\\).limit\\(10\\).then\\(r => console.log\\(JSON.stringify\\(r.data, null, 2\\)\\)\\);\n\")",
+      "Bash(node -e \"\nconst { createClient } = require\\(''@supabase/supabase-js''\\);\nconst supabase = createClient\\(\n  ''https://pdebpzqkuhafoggyclvb.supabase.co'',\n  ''eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBkZWJwenFrdWhhZm9nZ3ljbHZiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2ODExOTQ4NiwiZXhwIjoyMDgzNjk1NDg2fQ.4cUVKwmB0OfgJb8pCPDwNxAASZIoIpNpUE2fDFhTN3Q''\n\\);\nsupabase.auth.admin.updateUserById\\(''e187cbef-81f0-4394-b42d-248df98380de'', { password: ''Test1234!'' }\\).then\\(r => console.log\\(r.error ? ''Error: '' + r.error.message : ''Password updated successfully''\\)\\);\n\")"
+    ]
+  }
+}
