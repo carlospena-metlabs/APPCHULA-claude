@@ -34,9 +34,27 @@ export function BalanceChart({ data }: BalanceChartProps) {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Evolucion del Balance</CardTitle>
+    <Card className="border-border">
+      <CardHeader className="flex flex-row items-center justify-between">
+        <div>
+          <p className="text-sm text-muted-foreground">Invested</p>
+          <CardTitle className="text-3xl font-bold text-foreground">
+            {formatCurrency(data[data.length - 1]?.balance || 0)}
+            <span className="ml-2 text-sm font-medium text-primary bg-primary/10 px-2 py-1 rounded">
+              USDT
+            </span>
+          </CardTitle>
+        </div>
+        <div className="flex gap-2">
+          {['YTD', '1d', '30d', '6m', '12m'].map((period) => (
+            <button
+              key={period}
+              className="px-3 py-1 text-xs font-medium rounded-md border border-border text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+            >
+              {period}
+            </button>
+          ))}
+        </div>
       </CardHeader>
       <CardContent>
         <div className="h-64">
@@ -45,34 +63,34 @@ export function BalanceChart({ data }: BalanceChartProps) {
               data={data}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
             >
-              <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+              <defs>
+                <linearGradient id="balanceGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="oklch(0.70 0.15 175)" stopOpacity={0.3}/>
+                  <stop offset="95%" stopColor="oklch(0.70 0.15 175)" stopOpacity={0}/>
+                </linearGradient>
+              </defs>
+              <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.70 0.15 175 / 10%)" vertical={false} />
               <XAxis
                 dataKey="month"
-                tick={{ fontSize: 12 }}
+                tick={{ fontSize: 12, fill: 'oklch(0.65 0 0)' }}
                 tickLine={false}
                 axisLine={false}
               />
               <YAxis
                 tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
-                tick={{ fontSize: 12 }}
+                tick={{ fontSize: 12, fill: 'oklch(0.65 0 0)' }}
                 tickLine={false}
                 axisLine={false}
               />
               <Tooltip
-                content={({ active, payload }) => {
+                content={({ active, payload, label }) => {
                   if (active && payload && payload.length) {
                     return (
-                      <div className="rounded-lg border bg-background p-2 shadow-sm">
-                        <div className="grid gap-2">
-                          <div className="flex flex-col">
-                            <span className="text-[0.70rem] uppercase text-muted-foreground">
-                              Balance
-                            </span>
-                            <span className="font-bold text-muted-foreground">
-                              {formatCurrency(payload[0].value as number)}
-                            </span>
-                          </div>
-                        </div>
+                      <div className="rounded-lg border border-primary/20 bg-card p-3 shadow-lg">
+                        <p className="text-xs text-primary font-medium mb-1">{label}</p>
+                        <p className="text-lg font-bold text-foreground">
+                          {formatCurrency(payload[0].value as number)}
+                        </p>
                       </div>
                     )
                   }
@@ -82,9 +100,8 @@ export function BalanceChart({ data }: BalanceChartProps) {
               <Area
                 type="monotone"
                 dataKey="balance"
-                stroke="hsl(var(--primary))"
-                fill="hsl(var(--primary))"
-                fillOpacity={0.2}
+                stroke="oklch(0.70 0.15 175)"
+                fill="url(#balanceGradient)"
                 strokeWidth={2}
               />
             </AreaChart>

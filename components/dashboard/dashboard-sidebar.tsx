@@ -9,7 +9,9 @@ import {
   TrendingUp,
   ArrowDownToLine,
   UserCircle,
+  LogOut,
 } from 'lucide-react'
+import { logout } from '@/lib/actions/auth'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -23,11 +25,19 @@ export function DashboardSidebar({ user }: { user: User }) {
 
   return (
     <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
-      <div className="flex flex-col flex-grow bg-slate-900 pt-5 pb-4 overflow-y-auto">
+      <div className="flex flex-col flex-grow bg-sidebar pt-5 pb-4 overflow-y-auto border-r border-sidebar-border">
+        {/* Logo */}
         <div className="flex items-center flex-shrink-0 px-4">
-          <span className="text-xl font-bold text-white">APPCHULA</span>
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+              <span className="text-primary font-bold text-sm">A</span>
+            </div>
+            <span className="text-xl font-bold text-foreground">APPCHULA</span>
+          </div>
         </div>
-        <nav className="mt-8 flex-1 px-2 space-y-1">
+
+        {/* Navigation */}
+        <nav className="mt-8 flex-1 px-3 space-y-1">
           {navigation.map((item) => {
             const isActive = pathname === item.href ||
               (item.href !== '/dashboard' && pathname.startsWith(item.href))
@@ -37,23 +47,39 @@ export function DashboardSidebar({ user }: { user: User }) {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  'group flex items-center px-3 py-2 text-sm font-medium rounded-md',
+                  'group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-colors',
                   isActive
-                    ? 'bg-slate-800 text-white'
-                    : 'text-slate-300 hover:bg-slate-700 hover:text-white'
+                    ? 'bg-sidebar-accent text-primary border border-primary/20'
+                    : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-foreground'
                 )}
               >
-                <item.icon className="mr-3 h-5 w-5" />
+                <item.icon className={cn(
+                  "mr-3 h-5 w-5",
+                  isActive ? "text-primary" : "text-muted-foreground"
+                )} />
                 {item.name}
               </Link>
             )
           })}
         </nav>
-        <div className="px-4 py-4 border-t border-slate-700">
-          <p className="text-sm text-slate-400">
+
+        {/* Logout button */}
+        <div className="px-3 mb-4">
+          <button
+            onClick={() => logout()}
+            className="w-full flex items-center px-3 py-2.5 text-sm font-medium rounded-lg text-muted-foreground hover:bg-sidebar-accent hover:text-foreground transition-colors"
+          >
+            <LogOut className="mr-3 h-5 w-5" />
+            Log out
+          </button>
+        </div>
+
+        {/* User info */}
+        <div className="px-4 py-4 border-t border-sidebar-border">
+          <p className="text-sm text-foreground">
             {user.full_name}
           </p>
-          <p className="text-xs text-slate-500 capitalize">
+          <p className="text-xs text-muted-foreground capitalize">
             {user.user_type.replace('_', ' ')}
           </p>
         </div>

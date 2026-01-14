@@ -13,7 +13,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 function SubmitButton() {
   const { pending } = useFormStatus()
   return (
-    <Button type="submit" className="w-full" disabled={pending}>
+    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled={pending}>
       {pending ? 'Activando...' : 'Activar cuenta'}
     </Button>
   )
@@ -39,9 +39,9 @@ export function ActivateForm({ token }: { token: string }) {
 
   if (success) {
     return (
-      <Card>
+      <Card className="border-border bg-card">
         <CardContent className="pt-6">
-          <Alert>
+          <Alert className="bg-primary/10 border-primary/20 text-primary">
             <AlertDescription>
               ¡Cuenta activada! Redirigiendo al login...
             </AlertDescription>
@@ -52,32 +52,34 @@ export function ActivateForm({ token }: { token: string }) {
   }
 
   return (
-    <Card>
+    <Card className="border-border bg-card">
       <form action={handleSubmit}>
         <CardContent className="space-y-4 pt-6">
           {error && (
-            <Alert variant="destructive">
+            <Alert variant="destructive" className="bg-destructive/10 border-destructive/20 text-destructive">
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
           <div className="space-y-2">
-            <Label htmlFor="password">Nueva contraseña</Label>
+            <Label htmlFor="password" className="text-foreground">Nueva contraseña</Label>
             <Input
               id="password"
               name="password"
               type="password"
               minLength={8}
               required
+              className="bg-muted border-border text-foreground focus:border-primary"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirmar contraseña</Label>
+            <Label htmlFor="confirmPassword" className="text-foreground">Confirmar contraseña</Label>
             <Input
               id="confirmPassword"
               name="confirmPassword"
               type="password"
               minLength={8}
               required
+              className="bg-muted border-border text-foreground focus:border-primary"
             />
           </div>
         </CardContent>

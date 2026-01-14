@@ -23,35 +23,40 @@ export function DashboardHeader({ user }: { user: User }) {
     .slice(0, 2)
 
   return (
-    <header className="bg-white border-b border-slate-200 px-6 py-4">
+    <header className="bg-card border-b border-border px-6 py-4">
       <div className="flex items-center justify-between">
-        <div />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-              <Avatar className="h-10 w-10">
-                <AvatarFallback>{initials}</AvatarFallback>
-              </Avatar>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem disabled>
-              <UserIcon className="mr-2 h-4 w-4" />
-              {user.email}
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem asChild>
-              <Link href="/dashboard/perfil">
-                <Settings className="mr-2 h-4 w-4" />
-                Mi perfil
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => logout()}>
-              <LogOut className="mr-2 h-4 w-4" />
-              Cerrar sesion
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <h1 className="text-xl font-semibold text-foreground">Dashboard</h1>
+        <div className="flex items-center gap-4">
+          <Button variant="default" size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
+            Invest
+          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="relative h-10 w-10 rounded-full border border-border">
+                <Avatar className="h-10 w-10">
+                  <AvatarFallback className="bg-primary/20 text-primary">{initials}</AvatarFallback>
+                </Avatar>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="bg-popover border-border">
+              <DropdownMenuItem disabled className="text-muted-foreground">
+                <UserIcon className="mr-2 h-4 w-4" />
+                {user.email}
+              </DropdownMenuItem>
+              <DropdownMenuSeparator className="bg-border" />
+              <DropdownMenuItem asChild>
+                <Link href="/dashboard/perfil" className="text-foreground">
+                  <Settings className="mr-2 h-4 w-4" />
+                  Mi perfil
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => logout()} className="text-foreground">
+                <LogOut className="mr-2 h-4 w-4" />
+                Cerrar sesión
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
     </header>
   )

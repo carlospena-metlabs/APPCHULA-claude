@@ -13,7 +13,7 @@ import Link from 'next/link'
 function SubmitButton() {
   const { pending } = useFormStatus()
   return (
-    <Button type="submit" className="w-full" disabled={pending}>
+    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled={pending}>
       {pending ? 'Iniciando sesión...' : 'Iniciar sesión'}
     </Button>
   )
@@ -31,31 +31,33 @@ export function LoginForm() {
   }
 
   return (
-    <Card>
+    <Card className="border-border bg-card">
       <form action={handleSubmit}>
         <CardContent className="space-y-4 pt-6">
           {error && (
-            <Alert variant="destructive">
+            <Alert variant="destructive" className="bg-destructive/10 border-destructive/20 text-destructive">
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-foreground">Email</Label>
             <Input
               id="email"
               name="email"
               type="email"
               placeholder="tu@email.com"
               required
+              className="bg-muted border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Contraseña</Label>
+            <Label htmlFor="password" className="text-foreground">Contraseña</Label>
             <Input
               id="password"
               name="password"
               type="password"
               required
+              className="bg-muted border-border text-foreground focus:border-primary"
             />
           </div>
         </CardContent>
@@ -63,7 +65,7 @@ export function LoginForm() {
           <SubmitButton />
           <Link
             href="/reset-password"
-            className="text-sm text-slate-600 hover:text-slate-900"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
           >
             ¿Olvidaste tu contraseña?
           </Link>

@@ -34,45 +34,45 @@ export function YieldsTable({ yields }: YieldsTableProps) {
   }
 
   return (
-    <Card>
+    <Card className="border-border">
       <CardHeader>
-        <CardTitle>Historial de Rendimientos</CardTitle>
+        <CardTitle className="text-foreground">History</CardTitle>
       </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead>Periodo</TableHead>
-              <TableHead className="text-right">Porcentaje</TableHead>
-              <TableHead className="text-right">Monto</TableHead>
-              <TableHead className="text-right">Balance Anterior</TableHead>
-              <TableHead className="text-right">Balance Final</TableHead>
-              <TableHead className="text-center">Estado</TableHead>
+            <TableRow className="border-border hover:bg-transparent">
+              <TableHead className="text-muted-foreground">Periodo</TableHead>
+              <TableHead className="text-right text-muted-foreground">Porcentaje</TableHead>
+              <TableHead className="text-right text-muted-foreground">Monto</TableHead>
+              <TableHead className="text-right text-muted-foreground">Balance Anterior</TableHead>
+              <TableHead className="text-right text-muted-foreground">Balance Final</TableHead>
+              <TableHead className="text-center text-muted-foreground">Estado</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {yields.map((yld) => (
-              <TableRow key={yld.id}>
-                <TableCell className="font-medium capitalize">
+              <TableRow key={yld.id} className="border-border">
+                <TableCell className="font-medium capitalize text-foreground">
                   {formatMonthYear(yld.year, yld.month)}
                 </TableCell>
-                <TableCell className="text-right">
+                <TableCell className="text-right text-foreground">
                   {formatPercentage(yld.percentage_applied)}
                 </TableCell>
-                <TableCell className="text-right text-green-600 font-medium">
+                <TableCell className="text-right text-primary font-medium">
                   +{formatCurrency(yld.yield_amount)}
                 </TableCell>
-                <TableCell className="text-right">
+                <TableCell className="text-right text-muted-foreground">
                   {formatCurrency(yld.balance_before)}
                 </TableCell>
-                <TableCell className="text-right font-medium">
+                <TableCell className="text-right font-medium text-foreground">
                   {formatCurrency(yld.balance_after)}
                 </TableCell>
                 <TableCell className="text-center">
                   {yld.is_proportional ? (
-                    <Badge variant="secondary">Proporcional</Badge>
+                    <Badge variant="secondary" className="bg-secondary text-secondary-foreground">Proporcional</Badge>
                   ) : (
-                    <Badge variant="outline">Completo</Badge>
+                    <Badge className="bg-primary/20 text-primary border-primary/30">Complete</Badge>
                   )}
                 </TableCell>
               </TableRow>

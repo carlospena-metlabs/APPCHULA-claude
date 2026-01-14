@@ -14,7 +14,7 @@ import Link from 'next/link'
 function SubmitButton({ text, loadingText }: { text: string; loadingText: string }) {
   const { pending } = useFormStatus()
   return (
-    <Button type="submit" className="w-full" disabled={pending}>
+    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled={pending}>
       {pending ? loadingText : text}
     </Button>
   )
@@ -48,15 +48,15 @@ export function ResetPasswordForm({ hasCode }: { hasCode: boolean }) {
 
   if (success) {
     return (
-      <Card>
+      <Card className="border-border bg-card">
         <CardContent className="pt-6">
-          <Alert>
+          <Alert className="bg-primary/10 border-primary/20 text-primary">
             <AlertDescription>{success}</AlertDescription>
           </Alert>
         </CardContent>
         <CardFooter>
           <Link href="/login" className="w-full">
-            <Button variant="outline" className="w-full">
+            <Button variant="outline" className="w-full border-border text-foreground hover:bg-muted">
               Volver al login
             </Button>
           </Link>
@@ -67,32 +67,34 @@ export function ResetPasswordForm({ hasCode }: { hasCode: boolean }) {
 
   if (hasCode) {
     return (
-      <Card>
+      <Card className="border-border bg-card">
         <form action={handleResetPassword}>
           <CardContent className="space-y-4 pt-6">
             {error && (
-              <Alert variant="destructive">
+              <Alert variant="destructive" className="bg-destructive/10 border-destructive/20 text-destructive">
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
             <div className="space-y-2">
-              <Label htmlFor="password">Nueva contraseña</Label>
+              <Label htmlFor="password" className="text-foreground">Nueva contraseña</Label>
               <Input
                 id="password"
                 name="password"
                 type="password"
                 minLength={8}
                 required
+                className="bg-muted border-border text-foreground focus:border-primary"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirmar contraseña</Label>
+              <Label htmlFor="confirmPassword" className="text-foreground">Confirmar contraseña</Label>
               <Input
                 id="confirmPassword"
                 name="confirmPassword"
                 type="password"
                 minLength={8}
                 required
+                className="bg-muted border-border text-foreground focus:border-primary"
               />
             </div>
           </CardContent>
@@ -105,22 +107,23 @@ export function ResetPasswordForm({ hasCode }: { hasCode: boolean }) {
   }
 
   return (
-    <Card>
+    <Card className="border-border bg-card">
       <form action={handleRequestReset}>
         <CardContent className="space-y-4 pt-6">
           {error && (
-            <Alert variant="destructive">
+            <Alert variant="destructive" className="bg-destructive/10 border-destructive/20 text-destructive">
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-foreground">Email</Label>
             <Input
               id="email"
               name="email"
               type="email"
               placeholder="tu@email.com"
               required
+              className="bg-muted border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
             />
           </div>
         </CardContent>
@@ -128,7 +131,7 @@ export function ResetPasswordForm({ hasCode }: { hasCode: boolean }) {
           <SubmitButton text="Enviar instrucciones" loadingText="Enviando..." />
           <Link
             href="/login"
-            className="text-sm text-slate-600 hover:text-slate-900"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
           >
             Volver al login
           </Link>
