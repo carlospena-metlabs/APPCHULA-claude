@@ -33,7 +33,9 @@
       "Bash(node -e \"\nconst { createClient } = require\\(''@supabase/supabase-js''\\);\nconst supabase = createClient\\(\n  ''https://pdebpzqkuhafoggyclvb.supabase.co'',\n  ''eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBkZWJwenFrdWhhZm9nZ3ljbHZiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2ODExOTQ4NiwiZXhwIjoyMDgzNjk1NDg2fQ.4cUVKwmB0OfgJb8pCPDwNxAASZIoIpNpUE2fDFhTN3Q''\n\\);\nsupabase.auth.admin.updateUserById\\(''e187cbef-81f0-4394-b42d-248df98380de'', { password: ''Test1234!'' }\\).then\\(r => console.log\\(r.error ? ''Error: '' + r.error.message : ''Password updated successfully''\\)\\);\n\")",
       "Bash(powershell -Command \"Get-NetTCPConnection -State Listen | Where-Object { $_LocalAddress -eq ''127.0.0.1'' -or $_LocalAddress -eq ''0.0.0.0'' } | ForEach-Object { Stop-Process -Id $_OwningProcess -Force -ErrorAction SilentlyContinue }\")",
       "Bash(powershell -Command \"Get-NetTCPConnection -State Listen | ForEach-Object { Stop-Process -Id $_OwningProcess -Force -ErrorAction SilentlyContinue }\")",
-      "Bash(powershell -Command 'Get-NetTCPConnection -State Listen | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }')"
+      "Bash(powershell -Command 'Get-NetTCPConnection -State Listen | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }')",
+      "mcp__plugin_figma_figma-desktop__get_design_context",
+      "mcp__plugin_figma_figma-desktop__get_screenshot"
     ]
   }
 }
